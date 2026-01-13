@@ -1,0 +1,34 @@
+/* SKIT Brand Inspired Colors */
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.header {
+    background: #B1322C; /* SKIT red inspired */ 
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar {
+    background: #770000;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer {
+    background: #B1322C;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
