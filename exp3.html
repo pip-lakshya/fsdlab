@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Experiment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-500 flex items-center justify-center min-h-screen">
+        <h1 class="absolute top-8 justify-center text-white text-3xl font-bold">Hello Everyone</h1>
+
+        <div class="flex gap-10 bg-gray-400 p-10 rounded shadow-lg">
+
+            <div class="relative bg-white p-7 rounded shadow-md text-center">
+            <h1 class="text-2xl shadow-sm font-bold mb-4 text-yellow-700">This is an alert</h1>
+            <p class="mb-6 font-bold text-green-700">If you are intelligent click this button.</p>
+            <button onclick="showalert()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Click Me</button>
+                </div>
+
+            <div class=" bg-white p-7 rounded shadow-md text-center relative">
+            <h1 class="text-center text-red-500 mt-4 font-bold text-2xl">Popover</h1>
+                <p class="mt-4">Click here for <b>hidden message</b>.</p>
+                <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700" data-popover-target="popover-example">CLICK ME</button>
+                <div id="popover-example" class="hidden absolute z-10 w-64 p-4 bg-white border border-gray-300 rounded shadow-lg">
+                    <h3 class="font-bold text-lg mb-2">Hidden message</h3>
+                    <p>"Nothing hidden!<br>You were fooled again!!"</p>
+            </div>
+        </div>
+
+        <div class="relative justify-center bg-white p-7 rounded shadow-md text-center">
+            <h1 class="text-2xl shadow-sm font-bold mb-4 text-purple-700">Load AJAX Data</h1>
+            <button onclick="load();" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700">Load Question</button>
+            <p class="mt-4 font-bold" id="Loadedques"></p>
+            <p class="mt-4" id="Loadedans"></p>
+            <button onclick="loadans()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Show Answer</button>
+        </div></div>
+        <script>
+            function showalert(){
+                alert("You are fooled!\nHahaha!");    
+            }
+            const popoverButton = document.querySelector('[data-popover-target="popover-example"]');
+            const popover = document.getElementById('popover-example');
+            popoverButton.addEventListener('click', () => {
+                popover.classList.toggle('hidden');
+            });
+            let question ="";
+            let Answer ="";
+            function load(){
+                fetch('https://newton.now.sh/api/v2/factor/x^2-1')
+                .then(response => response.json())
+                .then(data => {
+                    question = data.expression;
+                    Answer = data.result;
+                    document.getElementById("Loadedques").innerHTML = "Question: "+ question;
+               }); }
+                function loadans(){
+                    document.getElementById("Loadedans").innerHTML = "Answer: "+ Answer;
+                }
+             
+        </script>
+    </body>
+</html>
