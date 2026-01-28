@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Experiment 4: DOM Manipulation</h1>
+    </header>
+    <div class="p-6 bg-gray-100">
+        <h2 class="text-xl font-bold mb-4">Tip-i Tip-i Top</h2>
+        <div class="grid grid-cols-2 gap-6 justify-items-center">
+            <div class="bg-blue-500 p-4 text-white w-48 h-20 rounded shadow-md" id="c1">
+            </div>
+            <div class="bg-red-500 p-4 text-white w-48 h-20 rounded shadow-md" id="c2">
+            </div>
+            <div class="bg-green-500 p-4 text-white w-48 h-20 rounded shadow-md" id="c3">
+            </div>
+            <div class="bg-yellow-500 p-4 text-white w-48 h-20 rounded shadow-md" id="c4">
+            </div>
+        </div>
+    </div>
+<div class="p-6 flex justify-center">
+    <button id="colorButton" onclick="change()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 ">Change Color</button>
+</div>
+<div id="container"></div>
+</body>
+<script>
+    const mybody=document.body;
+    console.log(mybody);
+    const div1=document.getElementById("c1");
+    console.log(div1);
+    const div2=document.getElementById("c2");
+    console.log(div2);
+    const div3=document.getElementById("c3");
+    console.log(div3);
+    const div4=document.getElementById("c4");
+    console.log(div4);
+    const button=document.getElementById("colorButton");
+    console.log(button);
+    let colors=["red","blue","green","yellow"];
+    const divs = [div1, div2, div3, div4];
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    function change() {
+        shuffle(colors);
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.backgroundColor = colors[i];
+        }
+    }
+    const container = document.getElementById('container');
+    const newpara=document.createElement('p');
+    newpara.textContent="This is Experiment 4 on DOM Manipulation.";
+    newpara.classList.add('text-center', 'text-lg', 'mt-4', 'font-semibold');
+    container.appendChild(newpara);
+</script>
+</html>
