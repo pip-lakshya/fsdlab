@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            
+        }
+        
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0baaff;
+            color:white;             
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0c3888;
+            }
+        .button-div {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="button-div">
+<h1>Experiment 5: JavaScript and jQuery</h1>
+<p>Use jQuery to handle user events and manipulate HTML elements. Work with JSON data and apply ES6 features.</p>
+<button id="addtable" onclick="addTable()">Add Table</button></div>
+<div id="table-container"></div>
+<script>
+    function addTable() {
+        $(document).ready(function add() {
+            $.getJSON('data.json', function(data) {
+                // Iterate over the 'employees' array in the JSON data
+                $.each(data.players, function(index, player) {
+                    // Create a table for each employee
+                    let table = $('<table border="1" cellspacing="0" cellpadding="5"></table>');
+                    let headerRow = $('<tr></tr>');
+                    headerRow.append('<th>' + index + ' Players</th>');
+                    table.append(headerRow);
+
+                    let dataRow = $('<tr></tr>');
+                    for(let i = 0; i < data.players[index].length; i++){
+                    dataRow.append('<td>' + data.players[index][i] + '</td>');
+                    }
+                    table.append(dataRow);
+                    // Append the table to the container
+                    $('#table-container').append(table);
+                });
+            }).fail(function(jqxhr, textStatus, error) {
+                const err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+            });
+        });}
+</script></body>
+</html>

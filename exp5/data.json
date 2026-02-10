@@ -1,0 +1,35 @@
+{
+ 
+    "event": {
+      "name": "West Indies tour of South Africa",
+      "match_number": 1
+    },
+    "players": {
+      "WestIndies": [
+        "BA King",
+        "J Charles",
+        "MW Forde",
+        "SE Rutherford",
+        "RL Chase",
+        "SO Hetmyer",
+        "R Powell",
+        "JO Holder",
+        "R Shepherd",
+        "JNT Seales",
+        "AJ Hosein"
+      ],
+      "SouthAfrica": [
+        "LG Pretorius",
+        "AK Markram",
+        "RD Rickelton",
+        "D Brevis",
+        "RA Herman",
+        "JF Smith",
+        "GF Linde",
+        "C Bosch",
+        "K Rabada",
+        "KA Maharaj",
+        "KT Maphaka"
+      ]
+    }
+}
