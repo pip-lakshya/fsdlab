@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Manual Traffic Light</title>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <h1 class="text-3xl font-bold mb-6">Manual Traffic Light</h1>
+    <!-- Traffic Light Housing -->
+    <div class="bg-gray-900 p-4 rounded-xl shadow-2xl flex flex-col gap-3" id="lights">
+        <div id="red" class="w-20 h-20 rounded-full bg-red-600  duration-300"></div>
+        <div id="yellow" class="w-20 h-20 rounded-full bg-yellow-600 duration-300"></div>
+        <div id="green" class="w-20 h-20 rounded-full bg-green-600  duration-300"></div>
+    </div>
+
+    <!-- Button -->
+    <button id="nextBtn" class="mt-8 px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">
+        Next Light
+    </button>
+
+    <script>
+        const lights = ['red', 'yellow', 'green'];
+        let currentState = 0; 
+        updateLights();
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentState = (currentState + 1) % 3;
+            updateLights();
+        });
+
+        function updateLights() {
+         document.getElementById("lights").querySelectorAll("div[id]").forEach(el => el.classList.remove('bg-red-600', 'bg-yellow-600', 'bg-green-600'));
+
+        const activeLight = (currentState === 0) ? 'red' : (currentState === 1) ? 'yellow' : 'green';
+            document.getElementById(activeLight).classList.add('bg-' + activeLight + '-600');
+        }
+    </script>
+</body>
+</html>
