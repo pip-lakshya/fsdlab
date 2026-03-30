@@ -1,23 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  // 1. State declare
+  const [name, setName] = useState("");
+  const [list, setList] = useState([]);
+
+  // 2. Input change handle
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
+
+  // 3. Add item
+  const handleAdd = () => {
+    if (name.trim() === "") return;
+
+    setList([...list, name]); // add to array
+    setName(""); // clear input
+  };
+
+  // 4. Delete item
+  const handleDelete = (index) => {
+    const newList = list.filter((_, i) => i !== index);
+    setList(newList);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Hello Welcome to React</h1>
+      <h3>To-do list</h3>
+
+      {/* Input field */}
+      <input
+        type="text"
+        value={name}
+        onChange={handleChange}
+        placeholder="Enter something"
+      />
+
+      {/* Button */}
+      <button onClick={handleAdd}>Add</button>
+
+      {/* List rendering */}
+      <ul>
+        {list.map((item, index) => (
+          <li key={index}>
+            {item}
+            <button onClick={() => handleDelete(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
